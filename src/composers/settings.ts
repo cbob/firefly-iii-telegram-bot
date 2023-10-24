@@ -35,6 +35,7 @@ bot.command(command.SETTINGS, settingsCommandHandler)
 bot.hears(i18n.t('en', 'labels.SETTINGS'), settingsCommandHandler)
 bot.hears(i18n.t('ru', 'labels.SETTINGS'), settingsCommandHandler)
 bot.hears(i18n.t('it', 'labels.SETTINGS'), settingsCommandHandler)
+bot.hears(i18n.t('de', 'labels.SETTINGS'), settingsCommandHandler)
 bot.callbackQuery(INPUT_FIREFLY_URL, inputFireflyUrlCbQH)
 bot.callbackQuery(INPUT_FIREFLY_ACCESS_TOKEN, inputFireflyAccessTokenCbQH)
 bot.callbackQuery(TEST_CONNECTION, testConnectionCbQH)
@@ -82,6 +83,7 @@ function settingsInlineKeyboard(ctx: MyContext) {
     .text(ctx.i18n.t('labels.SWITCH_TO_RUSSIAN'), 'SWITCH_LANGUAGE=ru').row()
     .text(ctx.i18n.t('labels.SWITCH_TO_ENGLISH'), 'SWITCH_LANGUAGE=en').row()
     .text(ctx.i18n.t('labels.SWITCH_TO_ITALIAN'), 'SWITCH_LANGUAGE=it').row()
+    .text(ctx.i18n.t('labels.SWITCH_TO_GERMAN'), 'SWITCH_LANGUAGE=de').row()
     .text(ctx.i18n.t('labels.DONE'), DONE)
 
   return {
