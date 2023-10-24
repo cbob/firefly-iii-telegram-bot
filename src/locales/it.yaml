@@ -38,6 +38,7 @@ labels:
   SWITCH_TO_ENGLISH: 🇬🇧 Passa all'inglese
   SWITCH_TO_RUSSIAN: 🇷🇺 Passa al russo
   SWITCH_TO_ITALIAN: 🇮🇹 Passa all'italiano
+  SWITCH_TO_GERMAN: 🇩🇪 Passa al german
 
 welcome: >
   👋 Ciao! Questo bot ti aiuta ad aggiungere velocemente transazioni a Firefly III.
