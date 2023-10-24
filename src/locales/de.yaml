@@ -1,0 +1,278 @@
+commands:
+  start: Starten (Begrüßungsnachricht)
+  settings: Einstellungen
+  help: Hilfe
+
+labels:
+  ACCOUNTS: 💳 Konten
+  ADD_CATEGORIES: ➕ Kategorie hinzufügen
+  CANCEL: ✖ Abbrechen
+  CATEGORIES: 🔖 Kategorien
+  CHANGE_CATEGORY: 🔖 Kategorie
+  CHANGE_DATE: 📆 Datum
+  CHANGE_AMOUNT: 💸 Betrag
+  CHANGE_DESCRIPTION: 📝 Beschreibung
+  CHANGE_SOURCE_ACCOUNT: 📤 Quellkonto
+  CHANGE_DEST_ACCOUNT: 📥 Ziel
+  CLASSIFICATION: 🏷️  Klassifizierung
+  CLOSE: 🔙 Zurück
+  DECLINE_CATEGORIES_LIST: ✏️ Nein, nochmal versucehn
+  DEFAULT_ASSET_ACCOUNT_BUTTON: 💳 Standardkonto
+  DELETE: ❌ Löschen
+  OPEN_IN_BROWSER: 🔗 Im Browser öffnen
+  OPEN_ASSET_ACCOUNTS_IN_BROWSER: 🔗 Zu Bestandskonten navigieren
+  DONE: ✅ OK
+  EDIT_TRANSACTION: ✏️ Editieren
+  FIREFLY_ACCESS_TOKEN_BUTTON: 🔑 Zugangs-Token
+  FIREFLY_URL_BUTTON: 🔗 Firefly URL
+  LIST_TAGS: 🏷️  Tag
+  RENAME_CATEGORY: ✏️ Umbenennen
+  REPORTS: 📈 Report
+  SETTINGS: 🔧 Einstellungen
+  TEST_CONNECTION: 🔌 Verbindung prüfen
+  TO_WITHDRAWALS: 📤 Zu den Ausgaben
+  TO_DEPOSITS: 📥 Neue Einnahme
+  TO_TRANSFERS: ↔️ Neue Umbuchung
+  TRANSACTIONS: 🔀 Transaktionen
+  YES: ✅ Yes
+  SWITCH_TO_ENGLISH: 🇬🇧 Zu Englisch wechseln
+  SWITCH_TO_RUSSIAN: 🇷🇺 Zu Russisch wechseln
+  SWITCH_TO_ITALIAN: 🇮🇹 Zu Italienisch wechseln
+  SWITCH_TO_GERMAN: 🇩🇪 Zu Deutsch wechseln
+
+welcome: >
+  👋 Hallo! Dieser Bot hilft dir dabei schnell Transaktionen in Firefly III einzufügen.
+  Außerdem kann es einige Objekte Fireflys managen.
+needToSet: 'Um mit dem Bot loszulegen, müssen die folgenden Daten ausgefüllt werden:'
+setFireflyUrl: '  - *🔗 Firefly URL* - URL-Adresse deiner Firefly III instance'
+setFireflyAccessToken: '  - *🔑 Zugangs-Token* In der Firefly III Weboberfläche erstellt'
+navigateToSettings: Um fortzufahren wechsle zu *🔧 Einstellungen*.
+
+help: >
+  🤖 Bitte navigiere zum Bot Abschnitt *🔧 Einstellungen* und stelle zur Benutzung des Bots ein paar Dinge ein.   
+      
+  ❕ Um eine Transaktion hinzuzufügen, sende den Betrag. Dies kann eine Number sein oder ein mathematischer Ausdruck,
+  wie `100-5*3`.
+  Beim Empfang des Betrags wird der Bot zusätzliche Fragen zur Transaktionsparametern stellen.
+    
+  Du kannst auch Transaktionen hinzufügen, die keine zusätzlichen Fragen des Bots erfordern,
+  hierzu sende die Beschreibung der Transaktion und den Betrag, so wie
+    
+  `Kaffee 35`
+    
+  In diesem Fall wird eine neue Ausgaben vom Standardkonto mit der 
+  Beschreibung `Kaffee` und dem Betrag `35` erstellt.
+    
+  ✨ Darüberhinaus kannst du im dazugehörigem Abschnitt in Firefly III auch verschiedene *Regeln*
+  anlegen, in diesem Fall werden die Regeln auf alle Bot Transaktionen angewendet.
+
+common:
+  errorOccurred: Ein Fehler ist aufgetreten!
+  noDefaultSourceAccountExist: |
+    🙈 Whoa! Du hast kein Bestandskonto von dem du Geld abziehen kannst!
+       
+    🙏 Bitte navigiere zu deiner Firefly III Webseite und erstelle mindestens ein Bestandskonto.
+mdlwr:
+  noFireflyURLFound: Um mit dem Bot zu arbeiten, muss du die *🔗 Firefly URL* in den Bot *🔧 Einstellungen* angeben.
+  noFireflyAccessTokenFound: Um mit dem Bot zu arbeiten, muss du einen validen *🔑 Zugangs-Token* in den Bot *🔧 Einstellungen* angeben.
+settings:
+  notSpecified: '🚨 <NICHT ANGEGEBEN>'
+  inputFireflyUrl: >
+    Gebe die URL-Adresse deiner Firefly III Instanz ein.
+    Es sollte dieses Format aufweisen: *https://firefly.example.com*
+    oder so: *http://localhost:8080*
+  inputFireflyAccessToken: >
+    Füge dein Persönlicher Zugangs-Token ein.
+    Dieses kannst du in der Firefly III Weboberfläche erstellen und kopieren:
+    *Einstellungen → Profil → OAuth → Neuen Schlüssel erstellen*
+  defaultAssetAccountSet: Standardkonto gesetzt!
+  whatDoYouWantToChange: >
+    🔧 *Einstellungen*  
+       
+    Was willst du ändern?  
+       
+    *🔗 Firefly URL*: ${fireflyUrl || '🚨 <NICHT ANGEGEBEN>'}
+
+    *🔑 Zugangs-Token*: ${accessToken || '🚨 <NICHT ANGEGEBEN>'}
+
+    *💳 Standardkonto*: ${defaultSourceAccount.name || '🚨 <NICHT ANGEGEBEN>'}
+
+    *🌐 Sprache*: ${language}
+  selectDefaultAssetAccount: >
+    Wähle ein Bestandskonto, welches als Standard für Ausgaben dient.
+    Wenn es nicht gesetzt wird das Erste der unten stehende Liste als Standard verwendet:
+  specifySmthFirst: Gebe ${smth} zuerst an.
+  connectionFailed: Verbindung konnte NICHT hergestellt werden!
+  connectionFailedUnauthenticated: Authentifizierungfehler! Bitte stelle sicher, dass der angegebene Zugangs-Token nicht fehlerhaft oder abgelaufen ist.
+  connectionFailedBadUrl: Fehler bei der Verbindung zum Firefly Server! Stelle sicher, dass die angegebene Firefly URL richtig ist.
+  connectionSuccess: >
+    Verbindung hergestellt!
+
+    Hallo, ${email}!
+  badAccessToken: Der eingegebene Text sieht nicht wie ein Zugangs-Token aus. Bitte versuche es nochmal.
+  badUrl: >
+    Der eingegebene Text sieht nicht wie eine URL-Adresse aus. Bitte versuche es nochmal.
+    Gebe die URL-Adresse deiner Firefly III Instanz ein, z.B. https://firefly.example.com:
+
+accounts:
+  labels:
+    asset: Bestandskonten
+    expense: Ausgabekonten
+    revenue: Einnahmekonten
+    liability: Verbindlichkeiten
+  list:
+    noAccounts: Noch keine Konten🤷
+    asset: >
+      Saldo deiner Bestandskonten:
+       
+      <pre>${accounts.replace(/\n$/, '')}
+      
+      ──────────────────
+      
+      SUMME: ${sums ? sums : '0'}</pre>
+    expense: >
+      Saldo deiner Ausgabekonten:
+       
+      <pre>${accounts.replace(/\n$/, '')}
+      
+      ──────────────────
+      
+      SUMME: ${sums ? sums : '0'}</pre>
+    revenue: >
+      Saldo deiner Einnahmekonten:
+       
+      <pre>${accounts.replace(/\n$/, '')}
+      
+      ──────────────────
+      
+      SUMME: ${sums ? sums : '0'}</pre>
+    liability: >
+      Saldo deiner Verbindlichkeiten:
+       
+      <pre>${accounts.replace(/\n$/, '')}
+      
+      ──────────────────
+      
+      SUMME: ${sums ? sums : '0'}</pre>
+
+transactions:
+  list:
+    withdrawal: >
+      Deine Ausgaben für <b>${day}</b>:  
+        
+      <pre>${transactions.replace(/\n$/, '')}
+      
+      ──────────────────
+      
+      SUMME: ${sums ? sums : '0'}</pre>
+    deposit: >
+      Deine Einnahmen für <b>${day}</b>:  
+        
+      <pre>${transactions.replace(/\n$/, '')}
+      
+      ──────────────────
+      
+      SUMME: ${sums ? sums : '0'}</pre>
+    transfer: >
+      Deine Transaktionen für <b>${day}</b>:  
+        
+      <pre>${transactions.replace(/\n$/, '')}</pre>
+    noTransactions: 🤷 Keine Transaktionen
+  add:
+    dontUnderstand: >
+      🤖 Das verstehe ich nicht.  
+      Gebe einen Betrag für die Transaktion ein, es muss eine Zahl sein! 😉
+    withdrawalMessage: >
+      📆 ${date}  
+        
+      📤 ${description === 'N/A' ? '' : '*' + description + '*'}
+      *${amount}* *${currency}*${category ? ' zur Kategorie *' + category + '*' : ''} hinzugefügt
+
+      ${source} ➡️ ${destination}
+    depositMessage: >
+      📆 ${date}  
+       
+      📥 ${description === 'N/A' ? '' : '*' + description + '* '}
+      *${amount}* *${currency}* hinzugefügt
+      
+      ${source} ➡️ ${destination}
+    transferMessage: >
+      📆 ${date}  
+         
+      ↔️ Buche *${amount}* *${currency}* von Konto *${source}* zum Konto *${destination}* um
+    selectCategory: Welcher Kategorie soll *${amount}* zugeordnet werden?
+    noCategoriesYet: |
+      🤷 Bislang noch keine Kategorie erstellt.
+      Die Transaktion wird ohne Kategorie erstellt. Fortfahren?
+            
+      💡 Du kannst neue Kategorien einfach mit dem zugehörigem Bot *🔖 Kategorien* Button erstellen.
+    transactionDeleted: Transaktion gelöscht!
+    couldNotDelete: 'Kann die Transaktion nicht löschen mit der ID: ${id}'
+    selectRevenueAccount: 'Wähle ein Einnahmekonto dem *${amount}* abgehoben werden:'
+    selectAssetAccount: 'Wähle ein Ausgabekonto dem *${amount}* gutgeschrieben werden:'
+    selectSourceAccount: 'Wähle ein Quellkonto von dem *${amount}* umgebucht werden:'
+    selectDestAccount: 'Wähle ein Zielkonto zur Umbuchung aus:'
+    transactionError: '❗😰 Ein Fehler ist während der Erstellung der Transaktion aufgetreten: *${message}*'
+    created: Transaktion erstellt!
+
+  edit:
+    whatToEdit: ❓Was möchtest du ändern?
+    updated: Transaktion aktualisiert!
+    badAmountTyped: 'Der Betrag sollte eine Zahl sein. Bitte einen neuen Betrag eingeben:'
+    badDescriptionTyped: 'Die Beschreibung sollte Text sein. Bitte eine neue Beschreibung eingeben:'
+    typeNewAmount: >
+      Neuen Betrag eingeben.
+
+      💡 Du kannst mathematische Symbole zur Addition, Subtraction, Multiplikation and Division verwenden, um die gewünschte Operation auf dem aktuellen Wert der Transaktion auszuführen.
+
+      Zum Beispiel, "+35" würde 35 auf den bestehenden Betrag der Transaktion hinzuaddieren.
+    noCategoriesYet: |
+      🤷 Du hast bisher noch keine Kategorien erstellt.
+            
+      💡 Du kannst neue Kategorien einfach mit dem zugehörigem *🔖 Kategorien* Bot Button erstellen.
+    typeNewDescription: 'Neue Beschreibung eingeben:'
+    chooseNewCategory: 'Neue Kategorie auswählen:'
+    chooseNewSourceAccount: 'Neues Quellkonto auswählen:'
+    chooseNewDestinationAccount: 'Neues Zielkonto auswählen:'
+    chooseNewRevenueAccount: 'Neues Einnahmekonto:'
+    noSuchTransactionAnymore: |
+      🤖 Diese Transaktion (${id}) existiert nicht mehr!
+      Wahrscheinlich wurde es über die Firefly Webseite gelöscht.
+
+categories:
+  listEmpty: Noch keine Kategorien :(
+  list: >
+    Um Transaktionen für eine spezifische Kategorie anzuzeigen, wähle es aus der unten stehenden Liste aus.
+    Du kannst auch eine Kategorie umbenennen oder löschen sobald diese ausgewählt ist.
+  typeCategories: >
+    Neue Kategorien eingeben, sodass jede Kategorie in einer neuen Zeile steht, beispielsweise: 
+       
+    💡 Rechnungen
+
+    👕 Kleidung und Schuhe
+
+    🥦 Lebensmittel  
+       
+    *P.S.*: Kategorienname kann später noch geändert werden.
+
+    *P.P.S.*: Es ist OK, dass eine Kategorie mit dem selben Namen schon existiert.
+  confirmCreation: >
+    ${categories.length} neue Kategorie(n) werden erstellt:   
+       
+    ${categories.join('\n')}  
+       
+    Ist das OK?
+  typeNewName: 'Neuen Kategoriename eingeben:'
+  confirmDeletion: >
+    Bist du sicher, dass du diese Kategorie löschen möchtest?
+    Zugehörige Transaktionen werden nicht gelöscht. Diese können in Abschnitt *🔀 Transaktionen* gefunden werden.
+  deleted: Kategorie gelöscht!
+  noTransactions: Keine Transaktionen
+  transactionsList: >
+    <b>${categoryName}</b> Ausgaben für den Monat <b>${monthName}</b>:  
+      
+    <pre>${transactions.replace(/\n$/, '')}
+    
+    ──────────────────
+    
+    SUMME: ${sums ? sums : '0'}</pre>
